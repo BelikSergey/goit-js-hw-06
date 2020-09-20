@@ -1,11 +1,11 @@
-"use strict";
+"use stict";
 const users = [
   {
     id: "701b29c3-b35d-4cf1-a5f6-8b12b29a5081",
     name: "Moore Hensley",
     email: "moorehensley@indexia.com",
     eyeColor: "blue",
-    friends: ["Sharron Pace"],
+    friends: ["Sharron Pace", "Goldie Gentry"],
     isActive: false,
     balance: 2811,
     skills: ["ipsum", "lorem"],
@@ -29,7 +29,7 @@ const users = [
     name: "Blackburn Dotson",
     email: "blackburndotson@furnigeer.com",
     eyeColor: "brown",
-    friends: ["Jacklyn Lucas", "Linda Chapman"],
+    friends: ["Jacklyn Lucas", "Briana Decker"],
     isActive: false,
     balance: 1498,
     skills: ["non", "amet", "ipsum"],
@@ -38,22 +38,20 @@ const users = [
   },
 ];
 // Write code under this line
-const getUsersWithAge = (array, min, max) =>
+const getSortedUniqueSkills = (array) =>
   array
-    .filter(({ age }) => age > min && age < max)
-    .map(({ name, email }) => ({ name, email }));
+    .reduce((acc, item) => [...acc, ...item.skills], [])
+    .filter((element, index, arrey) => arrey.indexOf(element) === index)
+    .sort();
 
-console.log(getUsersWithAge(users, 20, 30));
-/* [
-    { name: 'Ross Vazquez', email: 'rossvazquez@xinware.com' },
-    { name: 'Elma Head', email: 'elmahead@omatom.com' },
-    { name: 'Carey Barr', email: 'careybarr@nurali.com' }
-] */
-
-// console.log(getUsersWithAge(users, 30, 40));
-/* [
-    { name: 'Moore Hensley', email: 'moorehensley@indexia.com' },
-    { name: 'Sharlene Bush', email: 'sharlenebush@tubesys.com' },
-    { name: 'Blackburn Dotson', email: 'blackburndotson@furnigeer.com' },
-    { name: 'Sheree Anthony', email: 'shereeanthony@kog.com' }
-] */
+console.log(getSortedUniqueSkills(users));
+/* [ 'adipisicing', 'amet',
+ 'anim', 'commodo',
+ 'culpa', 'elit',
+ 'ex', 'ipsum',
+ 'irure', 'laborum',
+ 'lorem', 'mollit',
+ 'non', 'nostrud',
+ 'nulla', 'proident',
+ 'tempor', 'velit',
+ 'veniam' ]; */

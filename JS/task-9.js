@@ -5,7 +5,7 @@ const users = [
     name: "Moore Hensley",
     email: "moorehensley@indexia.com",
     eyeColor: "blue",
-    friends: ["Sharron Pace"],
+    friends: ["Sharron Pace", "Goldie Gentry"],
     isActive: false,
     balance: 2811,
     skills: ["ipsum", "lorem"],
@@ -29,7 +29,7 @@ const users = [
     name: "Blackburn Dotson",
     email: "blackburndotson@furnigeer.com",
     eyeColor: "brown",
-    friends: ["Jacklyn Lucas", "Linda Chapman"],
+    friends: ["Jacklyn Lucas", "Briana Decker"],
     isActive: false,
     balance: 1498,
     skills: ["non", "amet", "ipsum"],
@@ -38,22 +38,10 @@ const users = [
   },
 ];
 // Write code under this line
-const getUsersWithAge = (array, min, max) =>
-  array
-    .filter(({ age }) => age > min && age < max)
-    .map(({ name, email }) => ({ name, email }));
+const getNamesSortedByFriendsCount = (array) =>
+  [...array]
+    .sort((a, b) => a.friends.length - b.friends.length)
+    .map(({ name }) => name);
 
-console.log(getUsersWithAge(users, 20, 30));
-/* [
-    { name: 'Ross Vazquez', email: 'rossvazquez@xinware.com' },
-    { name: 'Elma Head', email: 'elmahead@omatom.com' },
-    { name: 'Carey Barr', email: 'careybarr@nurali.com' }
-] */
-
-// console.log(getUsersWithAge(users, 30, 40));
-/* [
-    { name: 'Moore Hensley', email: 'moorehensley@indexia.com' },
-    { name: 'Sharlene Bush', email: 'sharlenebush@tubesys.com' },
-    { name: 'Blackburn Dotson', email: 'blackburndotson@furnigeer.com' },
-    { name: 'Sheree Anthony', email: 'shereeanthony@kog.com' }
-] */
+console.log(getNamesSortedByFriendsCount(users));
+// [ 'Moore Hensley', 'Sharlene Bush', 'Elma Head', 'Carey Barr', 'Blackburn Dotson', 'Sheree Anthony', 'Ross Vazquez' ]
